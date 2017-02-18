@@ -126,43 +126,45 @@ case $minc1 in
 1) ;;
 *) ;;
 esac
+
+d_com='dialog --stdout --backtitle "SWITCHconf v2.0 Beta"'
 # Создание переменных и присвоение значений
 # запрос логина
-login=$(dialog --stdout --backtitle "SWITCHconf v2.0 Beta" --title "Username" --clear --inputbox "Пожалуйста, введите логин для доступа к коммутатору (Пример: admin):" 9 40)
+login=$($d_com --title "Username" --clear --inputbox "Пожалуйста, введите логин для доступа к коммутатору (Пример: admin):" 9 40)
 # запрос пароля
-pass=$(dialog --stdout --backtitle "SWITCHconf v2.0 Beta" --title "Password" --clear --inputbox "Пожалуйста, введите пароль для доступа к коммутатору (Пример: 1234):" 9 40)
+pass=$($d_com --title "Password" --clear --inputbox "Пожалуйста, введите пароль для доступа к коммутатору (Пример: 1234):" 9 40)
 # запрос IP адреса
-ipaddress=$(dialog --stdout --backtitle "SWITCHconf v2.0 Beta" --title "Switch IP" --clear --inputbox "Пожалуйста, введите IP адрес коммутатора (Пример: 192.168.1.10):" 9 40)
+ipaddress=$($d_com --title "Switch IP" --clear --inputbox "Пожалуйста, введите IP адрес коммутатора (Пример: 192.168.1.10):" 9 40)
 # запрос маски подсети
-mask=$(dialog --stdout --backtitle "SWITCHconf v2.0 Beta" --title "Netmask" --clear --inputbox "Пожалуйста, введите маску подсети (Пример: 24):" 9 40)
+mask=$($d_com --title "Netmask" --clear --inputbox "Пожалуйста, введите маску подсети (Пример: 24):" 9 40)
 # запрос IP адреса шлюза
-gate=$(dialog --stdout --backtitle "SWITCHconf v2.0 Beta" --title "Gateway IP" --clear --inputbox "Пожалуйста, введите IP адрес шлюза (Пример: 192.168.1.1):" 9 40)
+gate=$($d_com --title "Gateway IP" --clear --inputbox "Пожалуйста, введите IP адрес шлюза (Пример: 192.168.1.1):" 9 40)
 # запрос номеров портов для удаления default vlan
-dfvlan=$(dialog --stdout --backtitle "SWITCHconf v2.0 Beta" --title "Default vlan" --clear --inputbox "Пожалуйста, введите номера портов для удаления default vlan (Пример: 1-26):" 9 40)
+dfvlan=$($d_com --title "Default vlan" --clear --inputbox "Пожалуйста, введите номера портов для удаления default vlan (Пример: 1-26):" 9 40)
 # запрос ID клиентского vlan
-clientvlanid=$(dialog --stdout --backtitle "SWITCHconf v2.0 Beta" --title "Vlan ID" --clear --inputbox "Пожалуйста, введите ID клиентского vlan (Пример: 1300):"  9 40)
+clientvlanid=$($d_com --title "Vlan ID" --clear --inputbox "Пожалуйста, введите ID клиентского vlan (Пример: 1300):"  9 40)
 # задаем имя клиенского vlan из переменной clientvlanid
 clientvlanname="s"$clientvlanid
 # запрос ID multicast vlan
-multid=$(dialog --stdout --backtitle "SWITCHconf v2.0 Beta" --title "Multicast vlan ID" --clear --inputbox "Пожалуйста, введите ID multicast vlan (Пример: 300):" 9 40)
+multid=$($d_com --title "Multicast vlan ID" --clear --inputbox "Пожалуйста, введите ID multicast vlan (Пример: 300):" 9 40)
 # запрос номеров клиентских портов
-clientvlanport=$(dialog --stdout --backtitle "SWITCHconf v2.0 Beta" --title "Client ports" --clear --inputbox "Пожалуйста, введите номера клиентских портов (Пример: 5,7-10):" 9 40)
+clientvlanport=$($d_com --title "Client ports" --clear --inputbox "Пожалуйста, введите номера клиентских портов (Пример: 5,7-10):" 9 40)
 # запрос ID управляющего vlan, имя будет присвоено по умолчанию (core) 
-corevlan=$(dialog --stdout --backtitle "SWITCHconf v2.0 Beta" --title "Control vlan ID" --clear --inputbox "Пожалуйста, введите ID управляющего vlan (Пример: 2000):" 9 40)
+corevlan=$($d_com --title "Control vlan ID" --clear --inputbox "Пожалуйста, введите ID управляющего vlan (Пример: 2000):" 9 40)
 # запрос номеров портов для управляющего vlan 
-corevlanport=$(dialog --stdout --backtitle "SWITCHconf v2.0 Beta" --title "Control ports" --clear --inputbox "Пожалуйста, введите номера управляющих портов (Пример: 16,24-25):" 9 40)
+corevlanport=$($d_com --title "Control ports" --clear --inputbox "Пожалуйста, введите номера управляющих портов (Пример: 16,24-25):" 9 40)
 # запрос IP адреса SNTP сервера
-sntpserv=$(dialog --stdout --backtitle "SWITCHconf v2.0 Beta" --title "SNTP IP" --clear --inputbox "Пожалуйста, введите IP адрес SNTP сервера (Пример: 192.168.1.1):" 9 40)
+sntpserv=$($d_com --title "SNTP IP" --clear --inputbox "Пожалуйста, введите IP адрес SNTP сервера (Пример: 192.168.1.1):" 9 40)
 # запрос сдвига временной зоны GMT+
-tz=$(dialog --stdout --backtitle "SWITCHconf v2.0 Beta" --title "TimeZone" --clear --inputbox "Пожалуйста, введите сдвиг часового пояса GMT+ (Пример: 3):" 9 40)
+tz=$($d_com --title "TimeZone" --clear --inputbox "Пожалуйста, введите сдвиг часового пояса GMT+ (Пример: 3):" 9 40)
 # запрос названия SNMP community
-snmpcommname=$(dialog --stdout --backtitle "SWITCHconf v2.0 Beta" --title "SNMP community" --clear --inputbox "Пожалуйста, введите название SNMP community (Пример: public):" 9 40)
+snmpcommname=$($d_com --title "SNMP community" --clear --inputbox "Пожалуйста, введите название SNMP community (Пример: public):" 9 40)
 # запрос SNMP системного имени коммутатора
-sysname=$(dialog --stdout --backtitle "SWITCHconf v2.0 Beta" --title "System Name" --clear --inputbox "Пожалуйста, введите системное имя коммутатора (Пример: eng, любое без пробелов):" 9 40) 
+sysname=$($d_com --title "System Name" --clear --inputbox "Пожалуйста, введите системное имя коммутатора (Пример: eng, любое без пробелов):" 9 40) 
 # запрос IP адреса syslog сервера 
-syslogserv=$(dialog --stdout --backtitle "SWITCHconf v2.0 Beta" --title "Syslog server IP" --clear --inputbox "Пожалуйста, введите IP адрес сервера сбора логов (Пример: 192.168.1.1):" 9 40)
+syslogserv=$($d_com --title "Syslog server IP" --clear --inputbox "Пожалуйста, введите IP адрес сервера сбора логов (Пример: 192.168.1.1):" 9 40)
 # запрос номеров портов для закрытия
-close1=$(dialog --stdout --backtitle "SWITCHconf v2.0 Beta" --title "Disable ports" --clear --inputbox "Пожалуйста, введите номера портов для их закрытия (Пример: 1-3,7):" 9 40)
+close1=$($d_com --title "Disable ports" --clear --inputbox "Пожалуйста, введите номера портов для их закрытия (Пример: 1-3,7):" 9 40)
 # ################################################
 # вывод диалогов о запросах требующих решения пользователя и выполнение их на коммутаторе
 # заходим на коммутатор
